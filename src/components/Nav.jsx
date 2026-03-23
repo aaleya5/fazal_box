@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Nav() {
+export default function Nav({ theme, toggleTheme }) {
   const [blended, setBlended] = useState(true);
 
   useEffect(() => {
@@ -28,6 +28,17 @@ export default function Nav() {
         <a href="#about"   onClick={(e) => { e.preventDefault(); scrollTo('about'); }}>About</a>
         <a href="#s1"      onClick={(e) => { e.preventDefault(); scrollTo('s1'); }}>Products</a>
         <a href="#outro"   onClick={(e) => { e.preventDefault(); scrollTo('outro'); }}>Contact</a>
+        <button
+          className="nav-theme-toggle"
+          onClick={toggleTheme}
+          aria-label="Toggle light/dark mode"
+          style={{
+            background: 'transparent', border: 'none', color: 'inherit',
+            cursor: 'pointer', fontSize: '13px', display: 'flex', alignItems: 'center'
+          }}
+        >
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
         <a
           href="#outro"
           className="nav-cta"

@@ -7,11 +7,35 @@ const boxTypes = [
 ];
 
 export default function Outro() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle, loading, success, error
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
+    setStatus('loading');
+
+    const form = e.target;
+    // NOTE: In production, change this to your actual deployed backend URL
+    const endpoint = 'http://localhost:3001/api/quote';
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
   };
 
   return (
@@ -45,49 +69,53 @@ export default function Outro() {
           <div className="fg-2">
             <div className="fg">
               <label>Name</label>
-              <input type="text" placeholder="Your name" required />
+              <input type="text" name="name" placeholder="Your name" required />
             </div>
             <div className="fg">
               <label>Company</label>
-              <input type="text" placeholder="Company name" />
+              <input type="text" name="company" placeholder="Company name" />
             </div>
           </div>
           <div className="fg-2">
             <div className="fg">
               <label>Email</label>
-              <input type="email" placeholder="you@company.com" required />
+              <input type="email" name="email" placeholder="you@company.com" required />
             </div>
             <div className="fg">
               <label>Phone</label>
-              <input type="tel" placeholder="+91 00000 00000" />
+              <input type="tel" name="phone" placeholder="+91 00000 00000" />
             </div>
           </div>
           <div className="fg">
             <label>Box Type</label>
-            <select defaultValue="">
+            <select name="boxType" defaultValue="">
               <option value="" disabled>Select...</option>
-              {boxTypes.map(t => <option key={t}>{t}</option>)}
+              {boxTypes.map(t => <option key={t} value={t}>{t}</option>)}
             </select>
           </div>
           <div className="fg-2">
             <div className="fg">
               <label>Dimensions (mm)</label>
-              <input type="text" placeholder="L × W × H" />
+              <input type="text" name="dimensions" placeholder="L × W × H" />
             </div>
             <div className="fg">
               <label>Quantity</label>
-              <input type="text" placeholder="500 units" />
+              <input type="text" name="quantity" placeholder="500 units" />
             </div>
           </div>
           <div className="fg">
             <label>Notes</label>
-            <textarea placeholder="Material, print, finish, deadline…" />
+            <textarea name="notes" placeholder="Material, print, finish, deadline…" />
           </div>
           <button
             type="submit"
-            className={`form-btn${sent ? ' sent' : ''}`}
+            disabled={status === 'loading' || status === 'success'}
+            className={`form-btn${status === 'success' ? ' sent' : ''}`}
           >
-            {sent ? '✓ Request Sent' : 'Send Request →'}
+            {status === 'loading' ? 'Sending...' :
+              status === 'success' ? '✓ Request Sent' :
+                status === 'error' ? 'Error. Try Again →' :
+                  'Send Request →'}
           </button>
         </form>
       </div>

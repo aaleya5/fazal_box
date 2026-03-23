@@ -14,9 +14,20 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-overline">Est. 2010 · Gujarat, India · Custom Packaging</div>
         <h1 className="hero-title">
-          <span className="hero-title-line">Custom</span>
-          <span className="hero-title-line">Boxes,</span>
-          <span className="hero-title-line">Built.</span>
+          {["CUSTOM", "BOXES,", "BUILT."].map((word, wIdx) => (
+            <span key={wIdx} className="hero-word">
+              {word.split('').map((char, cIdx) => (
+                <span 
+                  key={cIdx} 
+                  className="hero-char" 
+                  style={{animationDelay: `${(wIdx * 6 + cIdx) * 0.04 + 0.1}s`}}
+                >
+                  {char}
+                </span>
+              ))}
+              &nbsp;
+            </span>
+          ))}
         </h1>
         <p className="hero-sub">Fazal Box Works — Packaging for food, retail, e-commerce &amp; industry</p>
       </div>

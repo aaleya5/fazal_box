@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Cursor from './components/Cursor';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
@@ -10,10 +10,26 @@ import IndexDots from './components/IndexDots';
 import { products } from './data/products';
 
 export default function App() {
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('fazal-theme') || 'dark';
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    localStorage.setItem('fazal-theme', next);
+    document.documentElement.setAttribute('data-theme', next);
+  };
+
   return (
     <>
+      <div className="grain" aria-hidden="true" />
       <Cursor />
-      <Nav />
+      <Nav theme={theme} toggleTheme={toggleTheme} />
       <IndexDots />
 
       <main>
