@@ -162,7 +162,7 @@ body {
 /* ── Index Dots ── */
 .index-dots {
   position: fixed;
-  right: 32px;
+  right: 44px;
   top: 50%;
   z-index: 100;
   transform: translateY(-50%);
@@ -354,7 +354,7 @@ body {
 
 /* Stage */
 .slide-stage {
-  flex: 0 0 62%;
+  flex: 0 0 58%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -585,13 +585,13 @@ body {
 
 /* Info panel */
 .slide-info {
-  flex: 0 0 38%;
-  padding: 0 60px 0 48px;
+  flex: 0 0 42%;
+  padding: 0 100px 0 60px;
   position: relative;
   z-index: 2;
 }
 .product-slide:nth-child(even) .slide-info {
-  padding: 0 48px 0 60px;
+  padding: 0 60px 0 100px;
 }
 
 .slide-num {

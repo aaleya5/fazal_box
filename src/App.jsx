@@ -45,7 +45,7 @@ export default function App() {
 
       <footer>
         <span>© 2026 Fazal Box Works</span>
-        <span>Est. 2010 · Vadodara, Gujarat</span>
+        <span>Est. 1971 · Vadodara, Gujarat</span>
       </footer>
     </>
   );
