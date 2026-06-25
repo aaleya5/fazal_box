@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="hero-bg-line" />
 
       <div className="hero-content">
-        <div className="hero-overline">Est. 2010 · Gujarat, India · Custom Packaging</div>
+        <div className="hero-overline">Est. 2010 · Vadodara, Gujarat · Custom Packaging</div>
         <h1 className="hero-title">
           {["CUSTOM", "BOXES,", "BUILT."].map((word, wIdx) => (
             <span key={wIdx} className="hero-word">
@@ -29,7 +29,7 @@ export default function Hero() {
             </span>
           ))}
         </h1>
-        <p className="hero-sub">Fazal Box Works — Packaging for food, retail, e-commerce &amp; industry</p>
+        <p className="hero-sub">Fazal Box Works - Packaging for food, retail, e-commerce &amp; industry</p>
       </div>
 
       {/* Scroll indicator */}

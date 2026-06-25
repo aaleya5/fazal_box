@@ -8,13 +8,13 @@ const pillars = [
   },
   {
     icon: '◉',
-    title: 'Est. 2010',
+    title: 'Est. 1971',
     body: 'Over 15 years manufacturing corrugated and rigid packaging for clients across India.',
   },
   {
     icon: '◇',
-    title: 'Low MOQ',
-    body: 'Starting from 50 units. Whether you\'re a startup or a large manufacturer, we scale with you.',
+    title: 'Fitting MOQ',
+    body: 'MOQ corresponding to cost. Whether you\'re a startup or a large manufacturer, we scale with you.',
   },
   {
     icon: '◆',
@@ -56,7 +56,7 @@ export default function AboutSection() {
           />
           <div className="about-img-overlay" />
           <div className="about-img-badge">
-            <span className="badge-num">15<em>+</em></span>
+            <span className="badge-num">50<em>+</em></span>
             <span className="badge-label">Years of craft</span>
           </div>
         </div>
@@ -75,9 +75,9 @@ export default function AboutSection() {
 
         <p className="about-body about-anim reveal" style={{ transitionDelay: '0.15s' }}>
           Fazal Box Works is a manufacturer of high-quality custom packaging
-          boxes based in Gujarat, India. Since 2010, we have supplied
-          corrugated boxes, food-grade packaging, luxury rigid boxes, and
-          industrial cartons to businesses of every size — from home bakeries
+          boxes based in Vadodara, Gujarat, India. Since 1971, we have supplied
+          corrugated boxes, food-grade packaging, paper bags and
+          carton boxes to businesses of every size, from home bakeries
           to large-scale exporters.
         </p>
 
